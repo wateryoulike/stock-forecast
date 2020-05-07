@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>Login</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="/static/css/font-face.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="/static/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="/static/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="/static/css/theme.css" rel="stylesheet" media="all">
+
+</head>
+
+<body class="animsition">
+    <div class="page-wrapper">
+        <div class="page-content--bge5">
+            <div class="container">
+                <div class="login-wrap">
+                    <div class="login-content">
+	                    <div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
+	                        <div class="login-logo">
+	                            <h2 style="font-family: 'Poppins', sans-serif">量化回测系统</h2>
+	                        </div>
+	                        <div class="login-form">
+	                            <form action="/handleLogin" method="post">
+	                                <div class="form-group">
+	                                    <label>账号</label>
+	                                    <input id="account" class="au-input au-input--full" type="text" name="account" placeholder="账号">
+	                                </div>
+	                                <div class="form-group">
+	                                    <label>密码</label>
+	                                    <input id="password" class="au-input au-input--full" type="password" name="password" placeholder="密码">
+	                                </div>
+	                                <button id="loginBtn" style="margin-top: 3em" class="au-btn au-btn--block au-btn--green m-b-20" type="submit">登录</button>
+
+	                            </form>
+	                        </div>
+	                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<!-- Jquery JS-->
+    <script src="/static/vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="/static/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="/static/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="/static/vendor/slick/slick.min.js">
+    </script>
+    <script src="/static/vendor/wow/wow.min.js"></script>
+    <script src="/static/vendor/animsition/animsition.min.js"></script>
+    <script src="/static/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="/static/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="/static/vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="/static/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="/static/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/static/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="/static/vendor/select2/select2.min.js">
+    </script>
+    <!-- Main JS-->
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/modal_dialog.js"></script>
+	<script>
+		function message_success() {
+	        $modal({
+	            type: 'message', //弹框类型  'alert' or  'confirm' or 'message'  message提示(开启之前如果之前含有弹框则清除)
+	            icon: 'success', // 提示图标显示 'info' or 'success' or 'warning' or 'error'  or 'question'
+	            timeout: 2500, // 单位 ms  显示多少毫秒后关闭弹框 （ confirm 下无效 | 不传默认为 2000ms | 最短显示时间为500ms）
+	            content: '登录成功', // 提示文字
+	            center: false,// 是否绝对居中 默认为false  设置true后   top无效
+	            top:100, //距离顶部距离 单位px
+	            transition: 500, //过渡动画 默认 200   单位ms
+	            closable: true, // 是否显示可关闭按钮  默认为 false
+	        })
+	    }
+	    function message_fail() {
+	        $modal({
+	            type: 'message', //弹框类型  'alert' or  'confirm' or 'message'  message提示(开启之前如果之前含有弹框则清除)
+	            icon: 'error', // 提示图标显示 'info' or 'success' or 'warning' or 'error'  or 'question'
+	            timeout: 2500, // 单位 ms  显示多少毫秒后关闭弹框 （ confirm 下无效 | 不传默认为 2000ms | 最短显示时间为500ms）
+	            content: '登录失败', // 提示文字
+	            center: false,// 是否绝对居中 默认为false  设置true后   top无效
+	            top:100, //距离顶部距离 单位px
+	            transition: 500, //过渡动画 默认 200   单位ms
+	            closable: true, // 是否显示可关闭按钮  默认为 false
+	        })
+	    }
+	    $('#loginBtn').click(function () {
+	        event.preventDefault();
+	        var account = $('input#account').val();
+		    var password = $('input#password').val();
+		    console.log(account, password);
+	        //请求参数
+	        var list = {'account': account, 'password': password};
+	        var _this = this;
+	        $.ajax({
+	            //请求方式
+	            type : "POST",
+	            //请求的媒体类型
+	            contentType: "application/json;charset=UTF-8",
+	            //请求地址
+	            url : "/handleLogin",
+	            //数据，json字符串
+	            data : JSON.stringify(list),
+	            //请求成功
+	            success : function(result) {
+	                console.log(result['loginStatus']);
+	                var status = result['loginStatus'];
+	                if(status === 1){
+	                    message_success();
+	                    setTimeout(function () {
+		                    window.location.href = '/';
+                        }, 2700)
+
+	                }else{
+	                    message_fail();
+	                }
+	            },
+	            //请求失败，包含具体的错误信息
+	            error : function(e){
+	                console.log(e.status);
+	                console.log(e.responseText);
+	                message_fail();
+	            }
+	        });
+	    })
+	</script>
+
+</html>
+<!-- end document-->

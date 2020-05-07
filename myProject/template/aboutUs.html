@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>Dashboard</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="/static/css/font-face.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="/static/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="/static/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="/static/css/theme.css" rel="stylesheet" media="all">
+	<link href="/static/css/myStyle.css" rel="stylesheet" media="all">
+
+</head>
+
+<body class="animsition">
+    <div class="page-wrapper">
+        <!-- HEADER MOBILE-->
+        {% include 'public/mobile_head.html' %}
+        <!-- END HEADER MOBILE-->
+
+        <!-- MENU SIDEBAR-->
+        {% include 'public/aside.html' %}
+        <!-- END MENU SIDEBAR-->
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            {% include 'public/head.html' %}
+            <!-- HEADER DESKTOP-->
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+	                <div class="container-fluid">
+		                <div class="row">
+			                <div class="col-md-12">
+                                <div class="card">
+                                    <img class="card-img-top" src="/static/images/background.jpg" alt="Card image cap">
+                                    <div class="card-body">
+	                                    <div class="m-t-25">
+		                                    <h4 class="card-title mb-3">关于系统</h4>
+	                                        <p class="card-text">
+		                                        本系统是基于 <span style="font-size: 115%; font-weight: 500">bootstrap</span>&nbsp;+&nbsp;<span style="font-size: 115%; font-weight: 500">django</span>搭建的响应式网站
+	                                        </p>
+	                                    </div>
+	                                    <div class="m-t-25">
+		                                    <h4 class="card-title mb-3">特点</h4>
+		                                    <p class="card-text" style="font-size: 115%; font-weight: 500">
+			                                     1.有完善的ORM关系映射 <br>
+												 2.有强大的路由映射功能 <br>
+												 3.有完善的视图模板的实现 <br>
+												 4.有健全的后台管理系统 <br>
+												 5.有强大的缓存支持 <br>
+		                                    <p class="card-text">
+	                                    </div>
+	                                    <div class="m-t-25">
+		                                    <h4 class="card-title mb-3">用途</h4>
+		                                    <p class="card-text" style="font-size: 115%; font-weight: 500">
+			                                     模拟购买股票，分析数据，进行量化回测
+		                                    <p class="card-text">
+	                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+		                </div>
+                </div>
+            </div>
+            <!-- END MAIN CONTENT-->
+            <!-- END PAGE CONTAINER-->
+        </div>
+
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="/static/vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="/static/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="/static/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="/static/vendor/slick/slick.min.js">
+    </script>
+    <script src="/static/vendor/wow/wow.min.js"></script>
+    <script src="/static/vendor/animsition/animsition.min.js"></script>
+    <script src="/static/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="/static/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="/static/vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="/static/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="/static/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/static/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="/static/vendor/select2/select2.min.js">
+    </script>
+
+    <!-- Main JS-->
+    <script src="/static/js/modal_dialog.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/cate.js"></script>
+
+</body>
+
+</html>
+<!-- end document-->

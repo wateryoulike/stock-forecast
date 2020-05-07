@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>Dashboard</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="/static/css/font-face.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="/static/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="/static/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+
+    <!-- Main CSS-->
+    <link href="/static/css/theme.css" rel="stylesheet" media="all">
+	<link href="/static/css/myStyle.css" rel="stylesheet" media="all">
+	<link href="/static/css/myPagination.css" rel="stylesheet" media="all">
+
+</head>
+
+<body class="animsition">
+    <div class="page-wrapper">
+        <!-- HEADER MOBILE-->
+        {% include 'public/mobile_head.html' %}
+        <!-- END HEADER MOBILE-->
+
+        <!-- MENU SIDEBAR-->
+        {% include 'public/aside.html' %}
+        <!-- END MENU SIDEBAR-->
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            {% include 'public/head.html' %}
+            <!-- HEADER DESKTOP-->
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- USER DATA-->
+                            <div class="user-data m-b-30">
+                                <h2 class="title-3 m-b-30">
+                                    <i class="fa fa-signal"></i>
+                                    股市行情榜
+                                </h2>
+                                <div class="filters m-b-45">
+	                                <input type="hidden" value="{{ conditions.date }}" id="now_date">
+	                                <input type="hidden" value="{{ conditions.p_change }}" id="now_p_change">
+	                                <input type="hidden" value="{{ conditions.price_change }}" id="now_price_change">
+	                                <input type="hidden" value="{{ conditions.volume }}" id="now_volume">
+                                    <div class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border">
+                                        <input name="date_choose" id="date_choose" type="date" value="{{ conditions.date }}" min="2019-04-01" max="2020-04-02"/>
+                                    </div>
+                                    <div class="rs-select2--dark rs-select2--sm rs-select2--border">
+                                        <select class="js-select2 au-select-dark" id="p_change">
+                                            <option value="0" {% if conditions.p_change == 0 %}selected="selected"{% endif %}>涨跌幅度</option>
+                                            <option value="1" {% if conditions.p_change == 1 %}selected="selected"{% endif %}>上涨</option>
+                                            <option value="2" {% if conditions.p_change == 2 %}selected="selected"{% endif %}>下降</option>
+                                        </select>
+                                        <div class="dropDownSelect2"></div>
+                                    </div>
+                                    <div class="rs-select2--dark rs-select2--sm rs-select2--border">
+                                        <select class="js-select2 au-select-dark" id="price_change">
+                                            <option value="0" {% if conditions.price_change == 0 %}selected="selected"{% endif %}>价格变动</option>
+                                            <option value="1" {% if conditions.price_change == 1 %}selected="selected"{% endif %}>上升</option>
+                                            <option value="2" {% if conditions.price_change == 2 %}selected="selected"{% endif %}>下降</option>
+                                        </select>
+                                        <div class="dropDownSelect2"></div>
+                                    </div>
+                                    <div class="rs-select2--dark rs-select2--sm rs-select2--border">
+                                        <select class="js-select2 au-select-dark" id="volume">
+                                            <option value="0" {% if conditions.volume == 0 %}selected="selected"{% endif %}>成交量</option>
+                                            <option value="1" {% if conditions.volume == 1 %}selected="selected"{% endif %}>上升</option>
+                                            <option value="2" {% if conditions.volume == 2 %}selected="selected"{% endif %}>下降</option>
+                                        </select>
+                                        <div class="dropDownSelect2"></div>
+                                    </div>
+	                                <a id="condition_submit" class="btn btn-primary" href="#" role="button">筛选</a>
+
+                                </div>
+                                <div class="table-responsive table-data" style="overflow-y: visible; height: auto">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <td style="font-size: 120%">编号</td>
+                                                <td style="font-size: 120%">股票简称</td>
+                                                <td style="font-size: 120%">申购代码</td>
+                                                <td style="font-size: 120%">申购日期</td>
+                                                <td style="font-size: 120%">涨跌幅</td>
+                                                <td style="font-size: 120%">价格变动</td>
+                                                <td style="font-size: 120%">成交量</td>
+                                                <td style="font-size: 120%">更多数据</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="content">
+                                        {% for data in datas %}
+                                            <tr>
+                                                <input type="hidden" value="{{ data.id }}">
+                                                <td>
+                                                    <div class="table-data__info">
+                                                        <h6 style="font-size: 110%; padding-left: 1em; {% if forloop.counter < 4 %}color: #ff9607;{% endif %} font-weight: 600">{{ forloop.counter }}</h6>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="table-data__info">
+                                                        <h6>{{ data.name }}</h6>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="table-data__info">
+                                                        <h6>{{ data.code }}</h6>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="table-data__info">
+                                                        <h6>{{ data.date }}</h6>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="table-data__info" >
+                                                        <h6 style="{% if data.p_mark == 1 %}color: #dc3545;{% else %}color:#28a745{% endif %}">{{ data.p_change }}</h6>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="table-data__info">
+                                                        <h6 style="{% if data.price_mark == 1 %}color: #dc3545;{% else %}color:#28a745{% endif %}">{{ data.price_change }}</h6>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="table-data__info">
+                                                        <h6 >{{ data.volume }}</h6>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span id="more" class="more">
+                                                        <i class="zmdi zmdi-more"></i>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                    <input type="hidden" id="num" value="{{ num }}">
+                                    <div id="pagination" class="pagination"></div>
+                                </div>
+                            </div>
+                            <!-- END USER DATA-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END MAIN CONTENT-->
+            <!-- END MAIN CONTENT-->
+            <!-- END PAGE CONTAINER-->
+        </div>
+
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="/static/vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="/static/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="/static/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="/static/vendor/slick/slick.min.js">
+    </script>
+    <script src="/static/vendor/wow/wow.min.js"></script>
+    <script src="/static/vendor/animsition/animsition.min.js"></script>
+    <script src="/static/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="/static/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="/static/vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="/static/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="/static/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/static/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="/static/vendor/select2/select2.min.js">
+    </script>
+
+    <!-- Main JS-->
+    <script src="/static/js/modal_dialog.js"></script>
+    <script src="/static/js/cate.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/myPagination.js"></script>
+	<script>
+	$(document).ready(function () {
+	    var num = $('#num').val();
+	    console.log(num);
+	    new myPagination({
+	        id: 'pagination',
+	        curPage:1, //初始页码
+	        pageTotal: Math.ceil(num/10), //总页数
+			pageAmount: 10,  //每页多少条
+	        dataTotal: num, //总共多少条数据
+			pageSize: 5, //可选,分页个数
+	        showPageTotalFlag:true, //是否显示数据统计
+	        showSkipInputFlag:false, //是否支持跳转
+	        getPage: function (page) {
+	            //获取当前页数
+	            console.log(page);
+	        }
+	    });
+
+	    $('#condition_submit').click(function () {
+	        var date = $('#date_choose').val();
+	        var p_change = $("#p_change").val();
+	        if(p_change == null){
+	            p_change = 0;
+	        }
+	        var price_change = $("#price_change").val();
+	        if(price_change == null){
+	            price_change = 0;
+	        }
+	        var volume = $('#volume').val();
+	        if(volume == null){
+	            volume = 0;
+	        }
+		    console.log(date, p_change, price_change, volume);
+		    window.location.href = '/statistics?cateid=2&date=' + date + '&p_change=' + p_change + '&price_change=' + price_change + '&volume=' + volume;
+        })
+	})
+	</script>
+</body>
+
+</html>
+<!-- end document-->

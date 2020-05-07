@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>Dashboard</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="/static/css/font-face.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="/static/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="/static/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="/static/css/theme.css" rel="stylesheet" media="all">
+	<link href="/static/css/myStyle.css" rel="stylesheet" media="all">
+	<link href="/static/css/myPagination.css" rel="stylesheet" media="all">
+
+</head>
+
+<body class="animsition">
+    <div class="page-wrapper">
+        <!-- HEADER MOBILE-->
+        {% include 'public/mobile_head.html' %}
+        <!-- END HEADER MOBILE-->
+
+        <!-- MENU SIDEBAR-->
+	    {% include 'public/aside.html' %}
+        <!-- END MENU SIDEBAR-->
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            {% include 'public/head.html' %}
+            <!-- HEADER DESKTOP-->
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+	                <div class="row" style="margin-bottom: 3em">
+                        <div class="col-md-12">
+                            <div class="overview-wrap">
+                                <h2 class="title-1">{{ datas.name }}&nbsp;&nbsp; (SH:{{ datas.code }})</h2>
+                            </div>
+                        </div>
+                    </div>
+
+	                <div class="row">
+		                <div class="col-lg-12">
+					        <div class="card">
+					            <div class="card-header">
+					                <i class="fa fa-bar-chart-o"></i>
+					                <strong class="card-title pl-2">详情数据</strong>
+					            </div>
+					            <div class="card-body">
+					                <div class="row" style="margin-bottom: .6em">
+						                <div class="col-lg-3">
+							                <span style="font-size: 120%;color: #333333; font-weight: 500">日期：</span>{{ datas.date }}
+						                </div>
+						                <div class="col-lg-3">
+							                <span style="font-size: 120%;color: #333333; font-weight: 500">开盘价：</span>{{ datas.open }}
+						                </div>
+						                <div class="col-lg-3">
+							                <span style="font-size: 120%;color: #333333; font-weight: 500">最高价：</span>{{ datas.high }}
+						                </div>
+						                <div class="col-lg-3">
+							                <span style="font-size: 120%;color: #333333; font-weight: 500">收盘价：</span>{{ datas.close }}
+						                </div>
+					                </div>
+						            <div class="row" style="margin-bottom: .6em">
+							            <div class="col-lg-3">
+							                <span style="font-size: 120%;color: #333333; font-weight: 500">最低价：</span>{{ datas.low }}
+						                </div>
+						                <div class="col-lg-3">
+							                <span style="font-size: 120%;color: #333333; font-weight: 500">成交量：</span>{{ datas.volume }}
+						                </div>
+						                <div class="col-lg-3">
+							                <span style="font-size: 120%;color: #333333; font-weight: 500">价格变动：</span>{{ datas.price_change }}
+						                </div>
+						                <div class="col-lg-3">
+							                <span style="font-size: 120%;color: #333333; font-weight: 500">涨跌幅：</span>{{ datas.p_change }}
+						                </div>
+						            </div>
+						            <div class="row" style="margin-bottom: .6em">
+							            <div class="col-lg-3">
+							                <span style="font-size: 120%;color: #333333; font-weight: 500">5日均价：</span>{{ datas.ma5 }}
+						                </div>
+						                <div class="col-lg-3">
+							                <span style="font-size: 120%;color: #333333; font-weight: 500">10日均价：</span>{{ datas.ma10 }}
+						                </div>
+						                <div class="col-lg-3">
+							                <span style="font-size: 120%;color: #333333; font-weight: 500">20日均价：</span>{{ datas.ma20 }}
+						                </div>
+						            </div>
+					            </div>
+					        </div>
+		                </div>
+
+	                </div>
+
+	                <div class="row">
+		                <div class="col-lg-12 pagination" >
+			                <div class="col-lg-6">
+			                    <button type="button" class="btn btn-primary btn-sm">
+                                            <i class="fa  fa-sun-o"></i>&nbsp; 2019</button>
+
+				                <ul id="2019_year" class=""  style="display: inline; margin-left: .6em">
+					                {% for m in year_2019 %}
+			                        <li {% if message.year == 2019 and message.month == m %} style="background-color: #0084ff " {% endif %}><a {% if message.year == 2019 and message.month == m %}style="color: white" {% endif %} href="/detail?id={{ datas.id }}&year=2019&month={{ m }}">{{ m }}月份</a></li>
+					                {% endfor %}
+			                    </ul>
+			                </div>
+
+			                <div class="col-lg-6">
+				                <button type="button" class="btn btn-primary btn-sm">
+                                            <i class="fa  fa-sun-o"></i>&nbsp; 2020</button>
+				                <ul id="2020_year" class=""  style="display: inline; margin-left: .6em">
+			                        {% for m in year_2020 %}
+			                        <li {% if message.year == 2020 and message.month == m %} style="background-color: #0084ff " {% endif %}><a {% if message.year == 2020 and message.month == m %}style="color: white" {% endif %} href="/detail?id={{ datas.id }}&year=2020&month={{ m }}">{{ m }}月份</a></li>
+					                {% endfor %}
+			                    </ul>
+			                </div>
+		                </div>
+	                </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+	                        <input type="hidden" id="name" value="{{ message.name }}">
+	                        <input type="hidden" id="code" value="{{ message.code }}">
+	                        <input type="hidden" id="year" value="{{ message.year }}">
+	                        <input type="hidden" id="month" value="{{ message.month }}">
+	                        <input type="hidden" id="min" value="{{ message.min_val }}">
+	                        <input type="hidden" id="max" value="{{ message.max_val }}">
+	                        <div id="container" style="min-width:400px;height:400px"></div>
+					    </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END MAIN CONTENT-->
+            <!-- END PAGE CONTAINER-->
+        </div>
+
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="/static/vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="/static/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="/static/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="/static/vendor/slick/slick.min.js">
+    </script>
+    <script src="/static/vendor/wow/wow.min.js"></script>
+    <script src="/static/vendor/animsition/animsition.min.js"></script>
+    <script src="/static/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="/static/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="/static/vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="/static/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="/static/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/static/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="/static/vendor/select2/select2.min.js"></script>
+    <script src="/static/js/modal_dialog.js"></script>
+    <script src="/static/js/cate.js"></script>
+    <script src="/static/js/highcharts.js"></script>
+
+    <!-- Main JS-->
+    <script src="/static/js/main.js"></script>
+    <script>
+	    $('#2019_year > li > a').each(function () {
+		    console.log(this);
+		    $(this).click(function () {
+			    window.event.returnValue = true;
+            })
+        });
+	    var ma5_datas = JSON.parse('{{ ma5_datas }}');
+	    var ma10_datas = JSON.parse('{{ ma10_datas }}');
+	    var ma20_datas = JSON.parse('{{ ma20_datas }}');
+	    var name = $('#name').val();
+	    var code = $('#code').val();
+	    var year = $('#year').val();
+	    var month = $('#month').val();
+	    var min = $('#min').val();
+	    var max = $('#max').val();
+	    console.log(name, code, year, month, min, max);
+	    console.log(typeof message);
+	    console.log(typeof ma5_datas);
+	    console.log(ma5_datas);
+	    console.log(ma10_datas);
+	    console.log(ma20_datas);
+	    var main_title = name + ' - K线图';
+	    var date_title = year + '年 ' + month + '月份';
+	    var chart = Highcharts.chart('container', {
+		chart: {
+			type: 'spline'
+		},
+		title: {
+			text: main_title
+		},
+		subtitle: {
+			text: date_title
+		},
+		xAxis: {
+			type: 'datetime',
+			{#tickInterval:  24 * 3600 * 1000,#}
+            //格式化时间，day,week....
+            dateTimeLabelFormats: {
+                day: '%m-%d'
+            },
+			title: {
+				text: null
+			}
+		},
+		colors: ['#ff9100', '#4a92db', '#e95dc9', '#036', '#000'],
+		yAxis: {
+			title: {
+				text: '均价'
+			},
+			{#tickInterval:  24 * 3600 * 1000,#}
+			min: min,
+			max: max,
+		},
+		tooltip: {
+			headerFormat: '<b>{series.name}</b><br>',
+			pointFormat: '{point.x:%m-%d}: {point.y:.2f} 元',
+
+		},
+		plotOptions: {
+			spline: {
+				marker: {
+					enabled: true
+				}
+			}
+		},
+		series: [{
+			name: '五日线',
+			// Define the data points. All series have a dummy year
+			// of 1970/71 in order to be compared on the same x axis. Note
+			// that in JavaScript, months start at 0 for January, 1 for February etc.
+			data: ma5_datas
+		}, {
+			name: '十日线',
+			data: ma10_datas
+		}, {
+			name: '二十日线',
+			data: ma20_datas
+		}]
+	});
+
+    </script>
+
+</body>
+
+</html>
+<!-- end document-->

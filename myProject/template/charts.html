@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+
+    <!-- Title Page-->
+    <title>Dashboard</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="/static/css/font-face.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="/static/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="/static/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="/static/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="/static/css/theme.css" rel="stylesheet" media="all">
+	<link href="/static/css/myStyle.css" rel="stylesheet" media="all">
+	<style>
+		#choose1:hover{
+			cursor: pointer;
+		}
+	</style>
+
+</head>
+
+<body class="animsition">
+    <div class="page-wrapper">
+        <!-- HEADER MOBILE-->
+        {% include 'public/mobile_head.html' %}
+        <!-- END HEADER MOBILE-->
+
+        <!-- MENU SIDEBAR-->
+        {% include 'public/aside.html' %}
+        <!-- END MENU SIDEBAR-->
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            {% include 'public/head.html' %}
+            <!-- HEADER DESKTOP-->
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="overview-wrap">
+                                <h2 class="title-1">策略选择</h2>
+                            </div>
+                        </div>
+                    </div>
+
+	                <div class="row m-t-25">
+		                <div class="col-sm-6 col-lg-4 " >
+	                        <div id="choose1" data-toggle="modal" data-target="#largeModal" class="overview-item" style="background-image: linear-gradient(45deg, #fc466b 0%, #007bff 100%);">
+	                            <div class="overview__inner">
+	                                <div class="overview-box clearfix">
+	                                    <div class="icon">
+	                                        <i class="fa fa-tasks"></i>
+	                                    </div>
+	                                    <div class="text">
+	                                        <h2>近期K线策略</h2>
+	                                        <span>K线交叉点为信号</span>
+	                                    </div>
+	                                </div>
+	                                <div class="overview-chart">
+	                                    <canvas id="widgetChart1"></canvas>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+
+	                    <div class="col-sm-6 col-lg-4">
+	                        <div id="choose2" class="overview-item" data-toggle="modal" data-target="#largeModal2" style="background-image: linear-gradient(45deg, #007bff 0%, #20c997 100%);">
+	                            <div class="overview__inner">
+	                                <div class="overview-box clearfix">
+	                                    <div class="icon">
+	                                        <i class="fa fa-sort-amount-desc"></i>
+	                                    </div>
+	                                    <div class="text">
+	                                        <h2>特定成交量策略</h2>
+	                                        <span>特定成交量为信号</span>
+	                                    </div>
+	                                </div>
+	                                <div class="overview-chart">
+	                                    <canvas id="widgetChart2"></canvas>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+
+	                    <div class="col-sm-6 col-lg-4">
+	                        <div id="choose3" class="overview-item" data-toggle="modal" data-target="#largeModal3" style="background-image: linear-gradient(45deg, #20c997 0%, #ddc21d 100%);">
+	                            <div class="overview__inner">
+	                                <div class="overview-box clearfix">
+	                                    <div class="icon">
+	                                        <i class="fa fa-random"></i>
+	                                    </div>
+	                                    <div class="text">
+	                                        <h2>混合策略</h2>
+	                                        <span>K线和成交量的混合策略</span>
+	                                    </div>
+	                                </div>
+	                                <div class="overview-chart">
+	                                    <canvas id="widgetChart3"></canvas>
+	                                </div>
+	                            </div>
+	                        </div>
+		                </div>
+
+                    </div>
+
+	                <div class="m-t-25 row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong class="card-title mb-3" style="font-size: 120%">策略说明</strong>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mx-auto d-block">
+                                        <h2 class="title-5">
+	                                        一、&nbsp;&nbsp;近期K线策略
+                                        </h2>
+	                                    <p class="card-text m-t-25">
+		                                    以最近期K线和较远期K线的交点视为买入卖出信号
+                                        </p>
+	                                    <p class="card-text m-t-10">
+		                                    其中最近期K线呈上升趋势时视为买入信号，
+		                                    最近期K线呈下降趋势时视为卖出信号
+                                        </p>
+                                    </div>
+                                    <hr>
+	                                <div class="mx-auto d-block">
+                                        <h2 class="title-5">
+	                                        二、&nbsp;&nbsp;特定成交量策略
+                                        </h2>
+	                                    <p class="card-text m-t-25">
+		                                    根据次日成交量是否到达今日成交量的某个特定标准视为买入卖出信号
+                                        </p>
+		                                <p class="card-text m-t-10">
+		                                    其中次日成交量处于超过1的某个倍数范围时视为买入信号（如1.5~2.0）
+		                                    ,其中次日成交量处于低于1的某个范围时视为卖出信号（如0.5~0.8）
+                                        </p>
+                                    </div>
+                                    <hr>
+	                                <div class="mx-auto d-block">
+                                        <h2 class="title-5">
+	                                        二、&nbsp;&nbsp;混合策略策略
+                                        </h2>
+	                                    <p class="card-text m-t-25">
+		                                    只要满足次日成交量达到今日成交量的某个特定标准或者次日成交量达到今日成交量的某个特定标准视为买入卖出信号
+                                        </p>
+		                                <p class="card-text m-t-10">
+		                                    其中次日成交量处于超过1的某个倍数范围或者其中最近期K线呈上升趋势时视为买入信号（如1.5~2.0）
+		                                    ,其中次日成交量处于低于1的某个范围或者其中最近期K线呈上升趋势时视为卖出信号（如0.5~0.8）
+                                        </p>
+                                    </div>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+	        <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" style="display: none;" aria-hidden="true">
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="largeModalLabel">近期K线策略测试</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form action="/calculation" method="post">
+								<div class="row form-group">
+	                                <div class="col col-md-12">
+	                                    <div class="input-group">
+	                                        <div class="input-group-btn">
+	                                            <button class="btn btn-outline-link btn-lg btn-block" >
+		                                            测试名称:
+	                                            </button>
+	                                        </div>
+	                                        <input required type="text" id="test_name" name="test_name" placeholder="输入本次测试名称（如测试1）" class="form-control">
+	                                    </div>
+	                                </div>
+	                            </div>
+
+								<div class="row form-group">
+	                                <div class="col col-md-6">
+	                                    <div class="input-group">
+	                                        <div class="input-group-btn">
+	                                            <button class="btn btn-outline-link btn-lg btn-block">
+		                                            选择申购的股票:
+	                                            </button>
+	                                        </div>
+	                                        <div class="rs-select2--dark rs-select2--sm rs-select2--border" style="width: 48%">
+				                                <select id="share_id" name="share_id" class="js-select2 au-select-dark">
+					                                {% for data in datas %}
+				                                    <option value="{{ data.id }}">{{ data.code }}&nbsp;{{ data.share_name }}</option>
+					                                {% endfor %}
+				                                </select>
+			                                    <div class="dropDownSelect2"></div>
+			                                </div>
+	                                    </div>
+	                                </div>
+									<div class="col col-md-6">
+	                                    <div class="input-group">
+	                                        <div class="input-group-btn">
+	                                            <button class="btn btn-outline-link btn-lg btn-block" >
+		                                            初始资金:
+	                                            </button>
+	                                        </div>
+	                                        <div class="rs-select2--dark rs-select2--sm rs-select2--border">
+				                                <select id="spend_money" name="spend_money" class="js-select2 au-select-dark">
+				                                    <option value="1">10万元</option>
+				                                    <option value="2">20万元</option>
+					                                <option value="3">30万元</option>
+					                                <option value="4">40万元</option>
+				                                    <option value="5">50万元</option>
+					                                <option value="6">60万元</option>
+				                                    <option value="7">70万元</option>
+				                                    <option value="8">80万元</option>
+				                                    <option value="9">90万元</option>
+				                                    <option value="10">100万元</option>
+				                                </select>
+			                                    <div class="dropDownSelect2"></div>
+			                                </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+							    <div class="row form-group">
+                                <div class="col col-md-6">
+                                    <div class="input-group">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-outline-link btn-lg btn-block">
+	                                            具体K线方式:
+                                            </button>
+                                        </div>
+                                        <div class="rs-select2--dark rs-select5--sm rs-select2--border" style="width: 46%">
+			                                <select id="mode" name="mode" class="js-select2 au-select-dark">
+			                                    <option value="1">五日线和十日线</option>
+			                                    <option value="2">十日线和二十日线</option>
+				                                <option value="3">五日线和二十日线</option>
+			                                </select>
+		                                    <div class="dropDownSelect2"></div>
+		                                </div>
+                                    </div>
+                                </div>
+								<div class="col col-md-6">
+
+                                </div>
+                            </div>
+
+							    <div class="row form-group">
+                                <div class="col col-md-6">
+                                    <div class="input-group">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-outline-link btn-lg btn-block">
+	                                            开始时间:
+                                            </button>
+                                        </div>
+                                        <div class="rs-select2--dark rs-select5--sm rs-select2--border" style="width: 46%">
+			                                <select id="start_time" name="start_time" class="js-select2 au-select-dark">
+			                                    <option selected value="2019-04-01">2019-04-01</option>
+			                                    <option value="2019-05-01">2019-05-01</option>
+			                                    <option value="2019-06-01">2019-06-01</option>
+			                                    <option value="2019-07-01">2019-07-01</option>
+			                                    <option value="2019-08-01">2019-08-01</option>
+			                                    <option value="2019-09-01">2019-09-01</option>
+			                                    <option value="2019-10-01">2019-10-01</option>
+			                                    <option value="2019-11-01">2019-11-01</option>
+			                                    <option value="2019-12-01">2019-12-01</option>
+			                                </select>
+		                                    <div class="dropDownSelect2"></div>
+		                                </div>
+                                    </div>
+                                </div>
+								<div class="col col-md-6">
+                                    <div class="input-group">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-outline-link btn-lg btn-block" >
+	                                            花费时间:
+                                            </button>
+                                        </div>
+                                        <div class="rs-select2--dark rs-select2--sm rs-select2--border">
+			                                <select id="time_length" name="time_length" class="js-select2 au-select-dark">
+			                                    <option value="3">3个月</option>
+			                                    <option value="4">4个月</option>
+			                                    <option value="5">5个月</option>
+			                                    <option value="6">6个月</option>
+			                                    <option value="7">7个月</option>
+			                                    <option value="8">8个月</option>
+			                                    <option value="9">9个月</option>
+			                                    <option value="10">10个月</option>
+			                                    <option value="11">11个月</option>
+			                                    <option value="12">12个月</option>
+			                                </select>
+		                                    <div class="dropDownSelect2"></div>
+		                                </div>
+                                    </div>
+                                </div>
+                            </div>
+							    <hr>
+							    <div class="row col-md-12 m-t-25">
+		                            <h4>
+			                            说明
+		                            </h4>
+							    </div>
+								<div class="row m-t-10 col-md-12">
+									<h5>
+		                                以最近期K线和较远期K线的交点视为买入卖出信号
+		                            </h5>
+								</div>
+							    <div class="row m-t-10 col-md-12">
+								    <h5>
+		                                其中最近期K线呈上升趋势时视为买入信号，
+		                                最近期K线呈下降趋势时视为卖出信号
+		                            </h5>
+							    </div>
+                                <div class="row m-t-10 col-md-12">
+							    </div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+									<button type="submit" class="btn btn-primary">确定</button>
+								</div>
+						    </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            <div class="modal fade" id="largeModal2" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" style="display: none;" aria-hidden="true">
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="largeModalLabel">特定成交量策略</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form action="/calculation_mode2" method="post">
+								<div class="row form-group">
+	                                <div class="col col-md-12">
+	                                    <div class="input-group">
+	                                        <div class="input-group-btn">
+	                                            <button class="btn btn-outline-link btn-lg btn-block" >
+		                                            测试名称:
+	                                            </button>
+	                                        </div>
+	                                        <input required type="text" id="test_name" name="test_name" placeholder="输入本次测试名称（如测试1）" class="form-control">
+	                                    </div>
+	                                </div>
+	                            </div>
+
+								<div class="row form-group">
+	                                <div class="col col-md-6">
+	                                    <div class="input-group">
+	                                        <div class="input-group-btn">
+	                                            <button class="btn btn-outline-link btn-lg btn-block">
+		                                            选择申购的股票:
+	                                            </button>
+	                                        </div>
+	                                        <div class="rs-select2--dark rs-select2--sm rs-select2--border" style="width: 48%">
+				                                <select id="share_id" name="share_id" class="js-select2 au-select-dark">
+					                                {% for data in datas %}
+				                                    <option value="{{ data.id }}">{{ data.code }}&nbsp;{{ data.share_name }}</option>
+					                                {% endfor %}
+				                                </select>
+			                                    <div class="dropDownSelect2"></div>
+			                                </div>
+	                                    </div>
+	                                </div>
+									<div class="col col-md-6">
+	                                    <div class="input-group">
+	                                        <div class="input-group-btn">
+	                                            <button class="btn btn-outline-link btn-lg btn-block" >
+		                                            初始资金:
+	                                            </button>
+	                                        </div>
+	                                        <div class="rs-select2--dark rs-select2--sm rs-select2--border">
+				                                <select id="spend_money" name="spend_money" class="js-select2 au-select-dark">
+				                                    <option value="1">10万元</option>
+				                                    <option value="2">20万元</option>
+					                                <option value="3">30万元</option>
+					                                <option value="4">40万元</option>
+				                                    <option value="5">50万元</option>
+					                                <option value="6">60万元</option>
+				                                    <option value="7">70万元</option>
+				                                    <option value="8">80万元</option>
+				                                    <option value="9">90万元</option>
+				                                    <option value="10">100万元</option>
+				                                </select>
+			                                    <div class="dropDownSelect2"></div>
+			                                </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+							    <div class="row form-group">
+                                <div class="col col-md-6">
+                                    <div class="input-group">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-outline-link btn-lg btn-block">
+	                                            买入标志:
+                                            </button>
+                                        </div>
+                                        <div class="rs-select2--dark rs-select5--sm rs-select2--border" style="width: 46%">
+			                                <select id="buy_mark" name="buy_mark" class="js-select2 au-select-dark">
+			                                    <option value="1">1.0~1.2</option>
+			                                    <option value="2">1.2~1.5</option>
+				                                <option value="3">1.5~2.0</option>
+				                                <option value="4">2.0以上</option>
+			                                </select>
+		                                    <div class="dropDownSelect2"></div>
+		                                </div>
+                                    </div>
+                                </div>
+								<div class="col col-md-6">
+                                    <div class="input-group">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-outline-link btn-lg btn-block">
+	                                            卖出标志:
+                                            </button>
+                                        </div>
+                                        <div class="rs-select2--dark rs-select5--sm rs-select2--border" style="width: 46%">
+			                                <select id="sell_mark" name="sell_mark" class="js-select2 au-select-dark">
+			                                    <option value="1">0.0~0.2</option>
+			                                    <option value="2">0.2~0.5</option>
+				                                <option value="3">0.5~1.0</option>
+			                                </select>
+		                                    <div class="dropDownSelect2"></div>
+		                                </div>
+                                    </div>
+                                </div>
+                            </div>
+
+							    <div class="row form-group">
+                                <div class="col col-md-6">
+                                    <div class="input-group">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-outline-link btn-lg btn-block">
+	                                            开始时间:
+                                            </button>
+                                        </div>
+                                        <div class="rs-select2--dark rs-select5--sm rs-select2--border" style="width: 46%">
+			                                <select id="start_time2" name="start_time" class="js-select2 au-select-dark">
+			                                    <option selected value="2019-04-01">2019-04-01</option>
+			                                    <option value="2019-05-01">2019-05-01</option>
+			                                    <option value="2019-06-01">2019-06-01</option>
+			                                    <option value="2019-07-01">2019-07-01</option>
+			                                    <option value="2019-08-01">2019-08-01</option>
+			                                    <option value="2019-09-01">2019-09-01</option>
+			                                    <option value="2019-10-01">2019-10-01</option>
+			                                    <option value="2019-11-01">2019-11-01</option>
+			                                    <option value="2019-12-01">2019-12-01</option>
+			                                </select>
+		                                    <div class="dropDownSelect2"></div>
+		                                </div>
+                                    </div>
+                                </div>
+								<div class="col col-md-6">
+                                    <div class="input-group">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-outline-link btn-lg btn-block" >
+	                                            花费时间:
+                                            </button>
+                                        </div>
+                                        <div class="rs-select2--dark rs-select2--sm rs-select2--border">
+			                                <select id="time_length2" name="time_length" class="js-select2 au-select-dark">
+			                                    <option value="3">3个月</option>
+			                                    <option value="4">4个月</option>
+			                                    <option value="5">5个月</option>
+			                                    <option value="6">6个月</option>
+			                                    <option value="7">7个月</option>
+			                                    <option value="8">8个月</option>
+			                                    <option value="9">9个月</option>
+			                                    <option value="10">10个月</option>
+			                                    <option value="11">11个月</option>
+			                                    <option value="12">12个月</option>
+			                                </select>
+		                                    <div class="dropDownSelect2"></div>
+		                                </div>
+                                    </div>
+                                </div>
+                            </div>
+							    <hr>
+							    <div class="row col-md-12 m-t-25">
+		                            <h4>
+			                            说明
+		                            </h4>
+							    </div>
+								<div class="row m-t-10 col-md-12">
+									<h5>
+		                                以次日的成交量达到今日的特定倍数视为买入卖出信号
+		                            </h5>
+								</div>
+							    <div class="row m-t-10 col-md-12">
+								    <h5>
+		                                其中次日的成交量达到今日1.0倍以上视为买入信号，
+		                                次日的成交量达到今日1.0倍以下为卖出信号
+		                            </h5>
+							    </div>
+                                <div class="row m-t-10 col-md-12">
+							    </div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+									<button type="submit" class="btn btn-primary">确定</button>
+								</div>
+						    </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            <div class="modal fade" id="largeModal3" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" style="display: none;" aria-hidden="true">
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="largeModalLabel">混合策略</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form action="/calculation_mode3" method="post">
+								<div class="row form-group">
+	                                <div class="col col-md-12">
+	                                    <div class="input-group">
+	                                        <div class="input-group-btn">
+	                                            <button class="btn btn-outline-link btn-lg btn-block" >
+		                                            测试名称:
+	                                            </button>
+	                                        </div>
+	                                        <input required type="text" id="test_name" name="test_name" placeholder="输入本次测试名称（如测试1）" class="form-control">
+	                                    </div>
+	                                </div>
+	                            </div>
+
+								<div class="row form-group">
+	                                <div class="col col-md-6">
+	                                    <div class="input-group">
+	                                        <div class="input-group-btn">
+	                                            <button class="btn btn-outline-link btn-lg btn-block">
+		                                            选择申购的股票:
+	                                            </button>
+	                                        </div>
+	                                        <div class="rs-select2--dark rs-select2--sm rs-select2--border" style="width: 48%">
+				                                <select id="share_id" name="share_id" class="js-select2 au-select-dark">
+					                                {% for data in datas %}
+				                                    <option value="{{ data.id }}">{{ data.code }}&nbsp;{{ data.share_name }}</option>
+					                                {% endfor %}
+				                                </select>
+			                                    <div class="dropDownSelect2"></div>
+			                                </div>
+	                                    </div>
+	                                </div>
+									<div class="col col-md-6">
+	                                    <div class="input-group">
+	                                        <div class="input-group-btn">
+	                                            <button class="btn btn-outline-link btn-lg btn-block" >
+		                                            初始资金:
+	                                            </button>
+	                                        </div>
+	                                        <div class="rs-select2--dark rs-select2--sm rs-select2--border">
+				                                <select id="spend_money" name="spend_money" class="js-select2 au-select-dark">
+				                                    <option value="1">10万元</option>
+				                                    <option value="2">20万元</option>
+					                                <option value="3">30万元</option>
+					                                <option value="4">40万元</option>
+				                                    <option value="5">50万元</option>
+					                                <option value="6">60万元</option>
+				                                    <option value="7">70万元</option>
+				                                    <option value="8">80万元</option>
+				                                    <option value="9">90万元</option>
+				                                    <option value="10">100万元</option>
+				                                </select>
+			                                    <div class="dropDownSelect2"></div>
+			                                </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+							    <div class="row form-group">
+                                    <div class="col col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-outline-link btn-lg btn-block">
+                                                    k线买入卖出标志:
+                                                </button>
+                                            </div>
+                                            <div class="rs-select2--dark rs-select5--sm rs-select2--border" style="width: 46%">
+                                                <select id="k_mark" name="k_mark" class="js-select2 au-select-dark">
+                                                    <option value="1">五日线和十日线</option>
+                                                    <option value="2">十日线和二十日线</option>
+                                                    <option value="3">五日线和二十日线</option>
+                                                </select>
+                                                <div class="dropDownSelect2"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-6">
+
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-outline-link btn-lg btn-block">
+                                                    成交量买入标志:
+                                                </button>
+                                            </div>
+                                            <div class="rs-select2--dark rs-select5--sm rs-select2--border" style="width: 46%">
+                                                <select id="buy_mark" name="buy_mark" class="js-select2 au-select-dark">
+                                                    <option value="1">1.0~1.2</option>
+                                                    <option value="2">1.2~1.5</option>
+                                                    <option value="3">1.5~2.0</option>
+                                                    <option value="4">2.0以上</option>
+                                                </select>
+                                                <div class="dropDownSelect2"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-outline-link btn-lg btn-block">
+                                                    成交量卖出标志:
+                                                </button>
+                                            </div>
+                                            <div class="rs-select2--dark rs-select5--sm rs-select2--border" style="width: 46%">
+                                                <select id="sell_mark" name="sell_mark" class="js-select2 au-select-dark">
+                                                    <option value="1">0.0~0.2</option>
+                                                    <option value="2">0.2~0.5</option>
+                                                    <option value="3">0.5~1.0</option>
+                                                </select>
+                                                <div class="dropDownSelect2"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+							    <div class="row form-group">
+                                    <div class="col col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-outline-link btn-lg btn-block">
+                                                    开始时间:
+                                                </button>
+                                            </div>
+                                            <div class="rs-select2--dark rs-select5--sm rs-select2--border" style="width: 46%">
+                                                <select id="start_time2" name="start_time" class="js-select2 au-select-dark">
+                                                    <option selected value="2019-04-01">2019-04-01</option>
+                                                    <option value="2019-05-01">2019-05-01</option>
+                                                    <option value="2019-06-01">2019-06-01</option>
+                                                    <option value="2019-07-01">2019-07-01</option>
+                                                    <option value="2019-08-01">2019-08-01</option>
+                                                    <option value="2019-09-01">2019-09-01</option>
+                                                    <option value="2019-10-01">2019-10-01</option>
+                                                    <option value="2019-11-01">2019-11-01</option>
+                                                    <option value="2019-12-01">2019-12-01</option>
+                                                </select>
+                                                <div class="dropDownSelect2"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-md-6">
+                                        <div class="input-group">
+                                            <div class="input-group-btn">
+                                                <button class="btn btn-outline-link btn-lg btn-block" >
+                                                    花费时间:
+                                                </button>
+                                            </div>
+                                            <div class="rs-select2--dark rs-select2--sm rs-select2--border">
+                                                <select id="time_length2" name="time_length" class="js-select2 au-select-dark">
+                                                    <option value="3">3个月</option>
+                                                    <option value="4">4个月</option>
+                                                    <option value="5">5个月</option>
+                                                    <option value="6">6个月</option>
+                                                    <option value="7">7个月</option>
+                                                    <option value="8">8个月</option>
+                                                    <option value="9">9个月</option>
+                                                    <option value="10">10个月</option>
+                                                    <option value="11">11个月</option>
+                                                    <option value="12">12个月</option>
+                                                </select>
+                                                <div class="dropDownSelect2"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+							    <hr>
+							    <div class="row col-md-12 m-t-25">
+		                            <h4>
+			                            说明
+		                            </h4>
+							    </div>
+								<div class="row m-t-10 col-md-12">
+									<h5>
+		                                以次日的成交量达到今日的特定倍数或者最近期K线和较远期K线的交点视为买入卖出信号
+		                            </h5>
+								</div>
+							    <div class="row m-t-10 col-md-12">
+								    <h5>
+		                                其中次日的成交量达到今日1.0倍以上或者近期K线呈上升趋势视为买入信号，
+		                                次日的成交量达到今日1.0倍以下或者近期K线呈下降趋势为卖出信号
+		                            </h5>
+							    </div>
+                                <div class="row m-t-10 col-md-12">
+							    </div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+									<button type="submit" class="btn btn-primary">确定</button>
+								</div>
+						    </form>
+						</div>
+					</div>
+				</div>
+			</div>
+            <!-- END MAIN CONTENT-->
+            <!-- END PAGE CONTAINER-->
+        </div>
+
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="/static/vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="/static/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="/static/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="/static/vendor/slick/slick.min.js">
+    </script>
+    <script src="/static/vendor/wow/wow.min.js"></script>
+    <script src="/static/vendor/animsition/animsition.min.js"></script>
+    <script src="/static/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="/static/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="/static/vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="/static/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="/static/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/static/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="/static/vendor/select2/select2.min.js">
+    </script>
+
+    <!-- Main JS-->
+    <script src="/static/js/modal_dialog.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/cate.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#start_time').change(function () {
+                var now = parseInt($(this).val().substr(5, 2));
+                var length = 16 - now;
+                $('#time_length').empty();
+                for(var i = 3; i <= length; i++){
+                    var option = $('<option></option>').attr({
+                        value: i
+                    });
+                    $(option).html(i + '个月');
+                    $('#time_length').append(option);
+                }
+            });
+            $('#choose1').on('click', function () {
+                var now = parseInt($('#start_time').val().substr(5, 2));
+                var length = 16 - now;
+                console.log(now);
+                $('#time_length').empty();
+                for(var i = 3; i <= length; i++){
+                    var option = $('<option></option>').attr({
+                        value: i
+                    });
+                    $(option).html(i + '个月');
+                    $('#time_length').append(option);
+                }
+            });
+
+            $('#start_time2').change(function () {
+                var now = parseInt($(this).val().substr(5, 2));
+                var length = 16 - now;
+                $('#time_length2').empty();
+                for(var i = 3; i <= length; i++){
+                    var option = $('<option></option>').attr({
+                        value: i
+                    });
+                    $(option).html(i + '个月');
+                    $('#time_length2').append(option);
+                }
+            });
+            $('#choose2').on('click', function () {
+                var now = parseInt($('#start_time2').val().substr(5, 2));
+                var length = 16 - now;
+                console.log(now);
+                $('#time_length2').empty();
+                for(var i = 3; i <= length; i++){
+                    var option = $('<option></option>').attr({
+                        value: i
+                    });
+                    $(option).html(i + '个月');
+                    $('#time_length2').append(option);
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
+<!-- end document-->
